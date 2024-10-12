@@ -75,6 +75,7 @@ SELECT age, SUM(SALARY) AS total_salary
 FROM student1
 WHERE SALARY > 5000
 GROUP BY age;
+-- Different table
 create table department(
 d_id number(20) not null primary key,
 branch varchar(50)
@@ -85,3 +86,24 @@ alter table student1 add (d_id NUMBER(20));
 
 -- How to make a forign key
 ALTER TABLE student1 ADD CONSTRAINT d_id FOREIGN KEY (d_id) REFERENCES department(d_id);
+select * from student1;
+update student1 set d_id = (
+    case ID
+    when 451 then 3056
+    when 452 then 6056
+    when 453 then 5054
+    when 454 then 4202
+    when 449 then 7030
+    END
+);
+
+insert all
+into department values(3056,'Hr')
+into department values(6056,'Sde')
+into department values(5054,'Ase')
+into department values(4202,'Hr')
+into department values(7030,'Sde')
+select * from dual;
+
+-- having
+select ID from student1 group by ID,age having age > 21;
